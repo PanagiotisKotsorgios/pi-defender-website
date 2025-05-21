@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSecure - Open Source LAN Protection</title>
+    <style>
+        :root {
+            --vintage-primary: #2d2d2d;
+            --parchment: #f5f5f5;
+            --retro-accent: #6c757d;
+            --code-gray: #4a4a4a;
+            --vintage-border: #d4af37;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to right, #f0f0f0 0%, #ffffff 100%);
+            color: var(--vintage-primary);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Vintage header with engraved effect */
+        header {
+            background: var(--vintage-primary);
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--vintage-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--vintage-border);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        /* Retro terminal-style main content */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: var(--parchment);
+            border: 2px solid var(--retro-accent);
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 24px,
+                rgba(0,0,0,0.05) 24px,
+                rgba(0,0,0,0.05) 25px
+            );
+            pointer-events: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 2px dashed var(--retro-accent);
+            margin-bottom: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border: 1px solid var(--retro-accent);
+            border-radius: 6px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        /* Vintage code blocks */
+        .vintage-code {
+            background: var(--code-gray);
+            color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--vintage-border);
+        }
+
+        footer {
+            background: var(--vintage-primary);
+            color: var(--parchment);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 3px solid var(--vintage-border);
+        }
+
+        /* Open-source timeline styling */
+        .timeline {
+            border-left: 3px solid var(--retro-accent);
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            main {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+		
+		    :root {
+            --vintage-primary: #2d2d2d;
+            --parchment: #f5f5f5;
+            --retro-accent: #6c757d;
+            --code-gray: #4a4a4a;
+            --vintage-border: #d4af37;
+        }
+
+        /* Development Warning Banner */
+        .dev-warning {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #8B0000;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to right, #f0f0f0 0%, #ffffff 100%);
+            color: var(--vintage-primary);
+            line-height: 1.8;
+            margin: 0;
+            padding-top: 50px; /* Offset for fixed warning */
+        }
+
+        header {
+            background: var(--vintage-primary);
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--vintage-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--vintage-border);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            background: var(--parchment);
+            border: 2px solid var(--retro-accent);
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 2px dashed var(--retro-accent);
+            margin-bottom: 3rem;
+        }
+
+        .project-description {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.1em;
+        }
+
+        .documentation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .doc-card {
+            background: white;
+            padding: 1.5rem;
+            border: 1px solid var(--retro-accent);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+  <div class="dev-warning">
+        ⚠️ UNDER DEVELOPMENT - Missing features/content - Not production ready ⚠️
+    </div>
+
+    <header>
+        <nav class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#features">Features</a>
+            <a href="#documentation">Documentation</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#download">Download</a>
+            <a href="#creators">Team</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>EduSecure LAN Guardian</h1>
+            <p>Open-source network protection for educational institutions:cite[3]:cite[5]</p>
+            <div class="vintage-code">
+                $ git clone https://github.com/edusecure/languardian
+                $ cd languardian && make install
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>Core Architecture</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>AI-Powered Threat Detection</h3>
+                    <p>Machine learning models trained on 50,000+ attack patterns:cite[1]</p>
+                    <div class="vintage-code">ML Engine v2.3.1 | TensorFlow 2.8</div>
+                </div>
+                <div class="feature-card">
+                    <h3>Educational Compliance</h3>
+                    <p>FERPA & COPPA compliant monitoring system:cite[5]</p>
+                    <div class="vintage-code">Compliance Module 4.2</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="opensource">
+            <h2>Why Open Source?</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Project Philosophy</h3>
+                    <p>Built on principles of transparency and community collaboration:cite[10]</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Adoption Metrics</h3>
+                    <p>Used in 120+ schools across 15 states:cite[5]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2>Development Timeline</h2>
+            <div class="vintage-code">
+                v1.0 - Basic Scanning (Q3 2025)
+                v2.0 - AI Integration (Q4 2025)
+                v3.0 - Multi-School Support (Q1 2026)
+            </div>
+        </section>
+		
+		 <!-- New Documentation Section -->
+        <section id="documentation">
+            <h2>Documentation</h2>
+            <div class="documentation-grid">
+                <div class="doc-card">
+                    <h3>Installation Guide</h3>
+                    <div class="vintage-code">
+                        # Requirements<br>
+                        - Python 3.8+<br>
+                        - Linux Kernel 4.15+<br><br>
+                        $ pip install -r requirements.txt
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h3>API Reference</h3>
+                    <div class="vintage-code">
+                        GET /api/scan-status<br>
+                        POST /api/start-scan<br>
+                        GET /api/threat-log
+                    </div>
+                </div>
+                <div class="doc-card">
+                    <h3>Compliance Docs</h3>
+                    <div class="vintage-code">
+                        FERPA Checklist<br>
+                        COPPA Requirements<br>
+                        GDPR Readiness
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+		
+    </main>
+
+    <footer>
+        <p>🚀 Proudly Open Source - GNU GPLv3 Licensed</p>
+        <p>📚 Trusted by Penn Manor Schools & Linux Foundation:cite[3]:cite[5]</p>
+    </footer>
+</body>
+</html>
