@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSecure Documentation</title>
+    <link rel="stylesheet" href="styles-test.css">
+    <style>
+        /* Documentation-specific styles */
+        .doc-wrapper {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sidebar {
+            flex: 0 0 250px;
+            border-right: 2px solid var(--retro-accent);
+            padding-right: 1rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin: 0.5rem 0;
+        }
+
+        .sidebar-nav a {
+            color: var(--vintage-primary);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 1rem;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a:hover {
+            border-left-color: var(--vintage-border);
+        }
+
+        .doc-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .doc-section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid var(--retro-accent);
+        }
+
+        @media (max-width: 768px) {
+            .doc-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 2px solid var(--retro-accent);
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dev-warning">
+        ⚠️ DOCUMENTATION IN PROGRESS - Content is currently incomplete ⚠️ <br>
+        
+    </div>
+
+    <header>
+        <nav class="nav-links">
+            <a href="index.html">← Back to Home</a>
+            <a href="#installation">Installation</a>
+            <a href="#configuration">Configuration</a>
+            <a href="#troubleshooting">Troubleshooting</a>
+        </nav>
+    </header>
+
+
+   <style>
+.warn-vintage-sign {
+    background: #8B0000; /* Dark red base */
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,0.15) 10px,
+        rgba(0,0,0,0.15) 20px
+    );
+    border: 2px solid var(--vintage-border);
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    margin: 2rem 0;
+    color: var(--parchment);
+    font-family: 'Georgia', serif;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9em;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    transform: rotate(-1deg);
+}
+
+.warn-vintage-sign::before {
+    content: '!';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5em;
+    color: var(--vintage-border);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-family: 'Courier New', monospace;
+}
+
+.warn-vintage-sign::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom right,
+        transparent 40%,
+        rgba(255,255,255,0.1) 100%
+    );
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .warn-vintage-sign {
+        width: 90%;
+        padding: 0.8rem;
+        font-size: 0.8em;
+    }
+}
+</style>
+
+<div class="warn-vintage-sign">
+    ⚠️ All elements below are for visual usage only ⚠️<br>
+    Not accurate representation of final project
+</div>
+
+    <main>
+        <div class="doc-wrapper">
+            <nav class="sidebar">
+                <ul class="sidebar-nav">
+                    <li><a href="#installation">Installation Guide</a></li>
+                    <li><a href="#configuration">Config Reference</a></li>
+                    <li><a href="#cli-usage">CLI Usage</a></li>
+                    <li><a href="#api-docs">API Documentation</a></li>
+                    <li><a href="#compliance">Compliance Guide</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                </ul>
+            </nav>
+
+            <div class="doc-content">
+                <section id="installation" class="doc-section">
+                    <h2>Installation Guide</h2>
+                    <div class="vintage-code">
+                        # Debian/Ubuntu<br>
+                        $ sudo apt install ./pi-defender_1.0.2_amd64.deb<br><br>
+                        
+                        # RHEL/CentOS<br>
+                        $ sudo yum install pi-defender-1.0.2-1.x86_64.rpm
+                    </div>
+                </section>
+
+                <section id="configuration" class="doc-section">
+                    <h2>Configuration Reference</h2>
+                    <div class="vintage-code">
+                        # Example config.yaml<br>
+                        network_interface: eth0<br>
+                        scan_interval: 300<br>
+                        alert_threshold: medium
+                    </div>
+                </section>
+
+                <!-- Add other documentation sections following same pattern -->
+            </div>
+        </div>
+    </main>
+
+    <style>
+        /* Documentation Footer Specific */
+footer .doc-version {
+    font-family: 'Courier New', monospace;
+    color: var(--retro-accent);
+    font-size: 0.9em;
+    letter-spacing: 1.2px;
+    margin-bottom: 1.5rem;
+}
+
+.doc-credits {
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+.vintage-scroll {
+    filter: sepia(100%) brightness(120%);
+    margin: 0 0.7rem;
+    display: inline-block;
+    transform: rotate(-5deg);
+}
+
+.doc-tags {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.doc-tags .tag {
+    background: rgba(245, 245, 245, 0.15);
+    border: 1px solid var(--vintage-border);
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+
+/* Shared footer styles from previous implementation */
+footer {
+    background: var(--vintage-primary);
+    color: var(--parchment);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 3px solid var(--vintage-border);
+    font-family: 'Georgia', serif;
+    position: relative;
+    margin-top: 3rem;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--vintage-border) 50%,
+        transparent 100%
+    );
+}
+    </style>
+<footer>
+    <div class="footer-content">
+        <p class="doc-version">📜 Documentation v0.0.1 - March 2025</p>
+        <div class="doc-credits">
+            <span class="doc-crafted">Crafted with care</span>
+            <span class="vintage-scroll">📃</span>
+            <span class="doc-team">by &nbsp; [Panagiotis Kotsorgios , Fotis Markantonatos]</span>
+        </div>
+        <div class="doc-tags">
+            <span class="tag">Markdown</span>
+            <span class="tag">LaTeX</span>
+            <span class="tag">Doxygen</span>
+            <span class="tag">Man Pages</span>
+        </div>
+        <p class="copyright">© 2024-2025 PI-DEFENDER Project - Academic Use Only</p>
+    </div>
+</footer>
+</body>
+</html>
