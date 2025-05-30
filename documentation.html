@@ -4,9 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PI-DEFENDER SCHOOL PROJECT DOCUMENTATION</title>
-    <link rel="stylesheet" href="styles-test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Documentation-specific styles */
+        :root {
+            --vintage-primary: #4B382A;
+            --vintage-secondary: #7A5C48;
+            --vintage-border: #8B4513;
+            --retro-accent: #DAA520;
+            --parchment: #F5F5DC;
+            --ink: #3A2F1C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to bottom, #f0e6d2, #e2d4b7);
+            color: var(--ink);
+            line-height: 1.6;
+            padding: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><rect fill="none" stroke="%238B4513" stroke-width="2" x="10" y="10" width="80" height="80" rx="10" ry="10"/></svg>');
+            background-attachment: fixed;
+        }
+
+        /* Header and navigation */
+        header {
+            background: var(--vintage-primary);
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--vintage-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-links a {
+            color: var(--parchment);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(218, 165, 32, 0.2);
+            border-color: var(--retro-accent);
+        }
+
+        /* Warning banners */
+        .dev-warning {
+            background: #8B0000;
+            color: #FFD700;
+            text-align: center;
+            padding: 0.8rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px dashed #FFD700;
+            position: relative;
+        }
+
+        .warn-vintage-sign {
+            background: #8B0000;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0,0,0,0.15) 10px,
+                rgba(0,0,0,0.15) 20px
+            );
+            border: 2px solid var(--vintage-border);
+            border-radius: 4px;
+            padding: 1rem 2rem;
+            margin: 2rem auto;
+            color: var(--parchment);
+            font-family: 'Georgia', serif;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9em;
+            width: fit-content;
+            max-width: 90%;
+            transform: rotate(-1deg);
+        }
+
+        .warn-vintage-sign::before {
+            content: '!';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+            color: var(--vintage-border);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Courier New', monospace;
+        }
+
+        .warn-vintage-sign::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 40%,
+                rgba(255,255,255,0.1) 100%
+            );
+            pointer-events: none;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
         .doc-wrapper {
             display: flex;
             gap: 2rem;
@@ -17,6 +149,11 @@
             flex: 0 0 250px;
             border-right: 2px solid var(--retro-accent);
             padding-right: 1rem;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
         }
 
         .sidebar-nav {
@@ -33,12 +170,16 @@
             color: var(--vintage-primary);
             text-decoration: none;
             display: block;
-            padding: 0.3rem 1rem;
+            padding: 0.5rem 1rem;
             border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            border-radius: 0 4px 4px 0;
         }
 
-        .sidebar-nav a:hover {
-            border-left-color: var(--vintage-border);
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: rgba(218, 165, 32, 0.1);
+            border-left-color: var(--retro-accent);
+            padding-left: 1.5rem;
         }
 
         .doc-content {
@@ -48,11 +189,201 @@
 
         .doc-section {
             margin-bottom: 3rem;
-            padding: 1.5rem;
-            background: white;
+            padding: 2rem;
+            background: var(--parchment);
             border: 1px solid var(--retro-accent);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
+        .doc-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--retro-accent), var(--vintage-primary));
+        }
+
+        .doc-section h2 {
+            color: var(--vintage-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px dashed var(--vintage-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .doc-section h3 {
+            color: var(--vintage-secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .vintage-code {
+            background: #2c2c2c;
+            color: #f0e6d2;
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-family: 'Source Code Pro', monospace;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--retro-accent);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .code-comment {
+            color: #9E9E9E;
+        }
+
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: rgba(245, 245, 220, 0.7);
+        }
+
+        .config-table th, .config-table td {
+            border: 1px solid var(--vintage-border);
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .config-table th {
+            background: var(--vintage-primary);
+            color: var(--parchment);
+            font-weight: 700;
+        }
+
+        .config-table tr:nth-child(even) {
+            background: rgba(218, 165, 32, 0.1);
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .compliance-card {
+            background: rgba(245, 245, 220, 0.8);
+            border: 1px solid var(--retro-accent);
+            border-radius: 4px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .compliance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .compliance-card h4 {
+            color: var(--vintage-primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .troubleshooting-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .issue-card {
+            background: rgba(245, 245, 220, 0.8);
+            border-left: 4px solid var(--retro-accent);
+            padding: 1rem;
+            display: flex;
+        }
+
+        .issue-number {
+            background: var(--retro-accent);
+            color: var(--vintage-primary);
+            font-weight: bold;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--vintage-primary);
+            color: var(--parchment);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 3px solid var(--vintage-border);
+            font-family: 'Georgia', serif;
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                var(--vintage-border) 50%,
+                transparent 100%
+            );
+        }
+
+        .doc-version {
+            font-family: 'Courier New', monospace;
+            color: var(--retro-accent);
+            font-size: 0.9em;
+            letter-spacing: 1.2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-credits {
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .vintage-scroll {
+            filter: sepia(100%) brightness(120%);
+            margin: 0 0.7rem;
+            display: inline-block;
+            transform: rotate(-5deg);
+        }
+
+        .doc-tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .doc-tags .tag {
+            background: rgba(245, 245, 245, 0.15);
+            border: 1px solid var(--vintage-border);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .doc-wrapper {
                 flex-direction: column;
@@ -62,100 +393,48 @@
                 border-right: none;
                 border-bottom: 2px solid var(--retro-accent);
                 padding-bottom: 1rem;
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .doc-section {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="dev-warning">
-        ⚠️ DOCUMENTATION IN PROGRESS - Content is currently incomplete ⚠️ <br>
-        
+        ⚠️ DOCUMENTATION IN PROGRESS - Content is currently incomplete ⚠️
     </div>
 
     <header>
         <nav class="nav-links">
             <a href="index.html">← Back to Home</a>
-            <a href="#installation">Installation</a>
-            <a href="#configuration">Configuration</a>
-            <a href="#troubleshooting">Troubleshooting</a>
+            <div>
+                <a href="#installation">Installation</a>
+                <a href="#configuration">Configuration</a>
+                <a href="#troubleshooting">Troubleshooting</a>
+            </div>
         </nav>
     </header>
 
-
-   <style>
-.warn-vintage-sign {
-    background: #8B0000; /* Dark red base */
-    background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(0,0,0,0.15) 10px,
-        rgba(0,0,0,0.15) 20px
-    );
-    border: 2px solid var(--vintage-border);
-    border-radius: 4px;
-    padding: 1rem 2rem;
-    margin: 2rem 0;
-    color: var(--parchment);
-    font-family: 'Georgia', serif;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: 0.9em;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    transform: rotate(-1deg);
-}
-
-.warn-vintage-sign::before {
-    content: '!';
-    position: absolute;
-    left: -15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5em;
-    color: var(--vintage-border);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    font-family: 'Courier New', monospace;
-}
-
-.warn-vintage-sign::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom right,
-        transparent 40%,
-        rgba(255,255,255,0.1) 100%
-    );
-    pointer-events: none;
-}
-
-@media (max-width: 768px) {
-    .warn-vintage-sign {
-        width: 90%;
-        padding: 0.8rem;
-        font-size: 0.8em;
-    }
-}
-</style>
-
-<div class="warn-vintage-sign">
-    ⚠️ All elements below are for visual usage only ⚠️<br>
-    Not accurate representation of final project
-</div>
+    <div class="warn-vintage-sign">
+        ⚠️ All elements below are for visual usage only ⚠️<br>
+        Not accurate representation of final project
+    </div>
 
     <main>
         <div class="doc-wrapper">
             <nav class="sidebar">
                 <ul class="sidebar-nav">
-                    <li><a href="#installation">Installation Guide</a></li>
+                    <li><a href="#installation" class="active">Installation Guide</a></li>
                     <li><a href="#configuration">Config Reference</a></li>
                     <li><a href="#cli-usage">CLI Usage</a></li>
                     <li><a href="#api-docs">API Documentation</a></li>
@@ -167,111 +446,347 @@
             <div class="doc-content">
                 <section id="installation" class="doc-section">
                     <h2>Installation Guide</h2>
+                    <p>PI-DEFENDER requires a Linux-based system with kernel version 4.15 or later. The following dependencies must be installed:</p>
+                    
                     <div class="vintage-code">
-                        # Debian/Ubuntu<br>
+                        <span class="code-comment"># Required dependencies</span><br>
+                        $ sudo apt install build-essential libpcap-dev libssl-dev python3-dev<br><br>
+                        
+                        <span class="code-comment"># Debian/Ubuntu installation</span><br>
                         $ sudo apt install ./pi-defender_1.0.2_amd64.deb<br><br>
                         
-                        # RHEL/CentOS<br>
-                        $ sudo yum install pi-defender-1.0.2-1.x86_64.rpm
+                        <span class="code-comment"># RHEL/CentOS installation</span><br>
+                        $ sudo yum install pi-defender-1.0.2-1.x86_64.rpm<br><br>
+                        
+                        <span class="code-comment"># Verify installation</span><br>
+                        $ pi-defender --version<br>
+                        PI-DEFENDER v1.0.2 (build 2025-03-15)
+                    </div>
+                    
+                    <h3>Post-Installation Steps</h3>
+                    <p>After installation, you need to configure the service and enable it to start on boot:</p>
+                    
+                    <div class="vintage-code">
+                        <span class="code-comment"># Start the service</span><br>
+                        $ sudo systemctl start pi-defender<br><br>
+                        
+                        <span class="code-comment"># Enable on boot</span><br>
+                        $ sudo systemctl enable pi-defender<br><br>
+                        
+                        <span class="code-comment"># Check service status</span><br>
+                        $ sudo systemctl status pi-defender
                     </div>
                 </section>
 
                 <section id="configuration" class="doc-section">
                     <h2>Configuration Reference</h2>
+                    <p>PI-DEFENDER uses a YAML configuration file located at <code>/etc/pi-defender/config.yaml</code>. Below are the main configuration options:</p>
+                    
                     <div class="vintage-code">
-                        # Example config.yaml<br>
+                        <span class="code-comment"># Example config.yaml</span><br>
                         network_interface: eth0<br>
                         scan_interval: 300<br>
-                        alert_threshold: medium
+                        alert_threshold: medium<br>
+                        log_level: info<br>
+                        email_alerts: true<br>
+                        email_address: admin@example.com<br>
+                        whitelist:<br>
+                          - 192.168.1.100<br>
+                          - 192.168.1.101
+                    </div>
+                    
+                    <h3>Configuration Options</h3>
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>network_interface</td>
+                                <td>string</td>
+                                <td>eth0</td>
+                                <td>Network interface to monitor</td>
+                            </tr>
+                            <tr>
+                                <td>scan_interval</td>
+                                <td>integer</td>
+                                <td>300</td>
+                                <td>Scan interval in seconds</td>
+                            </tr>
+                            <tr>
+                                <td>alert_threshold</td>
+                                <td>string</td>
+                                <td>medium</td>
+                                <td>Alert sensitivity (low, medium, high)</td>
+                            </tr>
+                            <tr>
+                                <td>log_level</td>
+                                <td>string</td>
+                                <td>info</td>
+                                <td>Logging verbosity (debug, info, warning, error)</td>
+                            </tr>
+                            <tr>
+                                <td>email_alerts</td>
+                                <td>boolean</td>
+                                <td>false</td>
+                                <td>Enable email notifications</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="cli-usage" class="doc-section">
+                    <h2>CLI Usage</h2>
+                    <p>The PI-DEFENDER command-line interface provides full control over the security system. Here are the primary commands:</p>
+                    
+                    <div class="vintage-code">
+                        <span class="code-comment"># Show help information</span><br>
+                        $ pi-defender --help<br><br>
+                        
+                        <span class="code-comment"># Start in foreground with debug logging</span><br>
+                        $ pi-defender start --foreground --log-level debug<br><br>
+                        
+                        <span class="code-comment"># Check current status</span><br>
+                        $ pi-defender status<br><br>
+                        
+                        <span class="code-comment"># View real-time monitoring</span><br>
+                        $ pi-defender monitor<br><br>
+                        
+                        <span class="code-comment"># Generate a security report</span><br>
+                        $ pi-defender report --output report.pdf
+                    </div>
+                    
+                    <h3>Common Command Examples</h3>
+                    
+                    <div class="vintage-code">
+                        <span class="code-comment"># Scan network with custom parameters</span><br>
+                        $ pi-defender scan --interface wlan0 --intensity high<br><br>
+                        
+                        <span class="code-comment"># Add IP to whitelist</span><br>
+                        $ pi-defender whitelist add 192.168.1.50<br><br>
+                        
+                        <span class="code-comment"># View blocked IP addresses</span><br>
+                        $ pi-defender blocklist show<br><br>
+                        
+                        <span class="code-comment"># Update threat definitions</span><br>
+                        $ pi-defender update
                     </div>
                 </section>
 
-                <!-- Add other documentation sections following same pattern -->
+                <section id="api-docs" class="doc-section">
+                    <h2>API Documentation</h2>
+                    <p>PI-DEFENDER provides a REST API for integration with other systems. The API runs on port 8080 by default.</p>
+                    
+                    <h3>Authentication</h3>
+                    <p>All API requests require an API key in the header:</p>
+                    <div class="vintage-code">
+                        Authorization: Bearer your_api_key_here
+                    </div>
+                    
+                    <h3>Endpoints</h3>
+                    
+                    <div class="vintage-code">
+                        <span class="code-comment"># Get system status</span><br>
+                        GET /api/v1/status<br><br>
+                        
+                        <span class="code-comment"># Start a scan</span><br>
+                        POST /api/v1/scan<br>
+                        { "intensity": "high", "targets": ["192.168.1.0/24"] }<br><br>
+                        
+                        <span class="code-comment"># Get scan results</span><br>
+                        GET /api/v1/results?scan_id=12345<br><br>
+                        
+                        <span class="code-comment"># Manage whitelist</span><br>
+                        POST /api/v1/whitelist<br>
+                        { "action": "add", "ip": "192.168.1.100" }
+                    </div>
+                    
+                    <h3>Example Usage with curl</h3>
+                    
+                    <div class="vintage-code">
+                        <span class="code-comment"># Get current status</span><br>
+                        $ curl -H "Authorization: Bearer API_KEY" \<br>
+                        http://localhost:8080/api/v1/status<br><br>
+                        
+                        <span class="code-comment"># Start a new scan</span><br>
+                        $ curl -X POST -H "Authorization: Bearer API_KEY" \<br>
+                        -H "Content-Type: application/json" \<br>
+                        -d '{"intensity": "medium"}' \<br>
+                        http://localhost:8080/api/v1/scan
+                    </div>
+                </section>
+
+                <section id="compliance" class="doc-section">
+                    <h2>Compliance Guide</h2>
+                    <p>PI-DEFENDER helps organizations meet various security compliance requirements. Below are the supported frameworks:</p>
+                    
+                    <div class="compliance-grid">
+                        <div class="compliance-card">
+                            <h4>GDPR</h4>
+                            <p>Helps meet requirements for personal data protection and breach notification timelines.</p>
+                        </div>
+                        <div class="compliance-card">
+                            <h4>ISO 27001</h4>
+                            <p>Supports Annex A controls for network security management and access control.</p>
+                        </div>
+                        <div class="compliance-card">
+                            <h4>PCI DSS</h4>
+                            <p>Meets requirements for network monitoring and intrusion detection (Req 11.4).</p>
+                        </div>
+                        <div class="compliance-card">
+                            <h4>HIPAA</h4>
+                            <p>Supports technical safeguards for access control and audit controls (164.312).</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Configuration for Compliance</h3>
+                    <p>To enable compliance reporting, add these settings to your config.yaml:</p>
+                    
+                    <div class="vintage-code">
+                        compliance:<br>
+                          frameworks:<br>
+                            - gdpr<br>
+                            - pci_dss<br>
+                          report_interval: monthly<br>
+                          retention_period: 7 years
+                    </div>
+                    
+                    <h3>Generating Compliance Reports</h3>
+                    <div class="vintage-code">
+                        <span class="code-comment"># Generate GDPR compliance report</span><br>
+                        $ pi-defender compliance report --framework gdpr --output gdpr-report.pdf<br><br>
+                        
+                        <span class="code-comment"># Generate all compliance reports</span><br>
+                        $ pi-defender compliance report --all
+                    </div>
+                </section>
+
+                <section id="troubleshooting" class="doc-section">
+                    <h2>Troubleshooting</h2>
+                    <p>Common issues and solutions for PI-DEFENDER:</p>
+                    
+                    <div class="troubleshooting-grid">
+                        <div class="issue-card">
+                            <div class="issue-number">1</div>
+                            <div>
+                                <h3>Service fails to start</h3>
+                                <p><strong>Solution:</strong> Check system logs with <code>journalctl -u pi-defender</code>. Ensure all dependencies are installed.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="issue-card">
+                            <div class="issue-number">2</div>
+                            <div>
+                                <h3>No network traffic detected</h3>
+                                <p><strong>Solution:</strong> Verify correct network interface in config.yaml. Run <code>pi-defender interfaces</code> to list available interfaces.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="issue-card">
+                            <div class="issue-number">3</div>
+                            <div>
+                                <h3>False positive alerts</h3>
+                                <p><strong>Solution:</strong> Adjust <code>alert_threshold</code> to 'low'. Add legitimate IPs to whitelist.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="issue-card">
+                            <div class="issue-number">4</div>
+                            <div>
+                                <h3>High CPU usage</h3>
+                                <p><strong>Solution:</strong> Increase <code>scan_interval</code> in configuration. Check for network loops.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="issue-card">
+                            <div class="issue-number">5</div>
+                            <div>
+                                <h3>Email alerts not sending</h3>
+                                <p><strong>Solution:</strong> Verify SMTP settings. Test with <code>pi-defender test-email</code> command.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Diagnostic Commands</h3>
+                    <div class="vintage-code">
+                        <span class="code-comment"># Run system diagnostics</span><br>
+                        $ pi-defender diagnose<br><br>
+                        
+                        <span class="code-comment"># Generate debug report</span><br>
+                        $ pi-defender debug-report<br><br>
+                        
+                        <span class="code-comment"># Check dependency versions</span><br>
+                        $ pi-defender versions
+                    </div>
+                </section>
             </div>
         </div>
     </main>
 
-    <style>
-        /* Documentation Footer Specific */
-footer .doc-version {
-    font-family: 'Courier New', monospace;
-    color: var(--retro-accent);
-    font-size: 0.9em;
-    letter-spacing: 1.2px;
-    margin-bottom: 1.5rem;
-}
-
-.doc-credits {
-    margin: 1rem 0;
-    font-style: italic;
-}
-
-.vintage-scroll {
-    filter: sepia(100%) brightness(120%);
-    margin: 0 0.7rem;
-    display: inline-block;
-    transform: rotate(-5deg);
-}
-
-.doc-tags {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.doc-tags .tag {
-    background: rgba(245, 245, 245, 0.15);
-    border: 1px solid var(--vintage-border);
-    padding: 0.25rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8em;
-}
-
-/* Shared footer styles from previous implementation */
-footer {
-    background: var(--vintage-primary);
-    color: var(--parchment);
-    padding: 2rem 1rem;
-    text-align: center;
-    border-top: 3px solid var(--vintage-border);
-    font-family: 'Georgia', serif;
-    position: relative;
-    margin-top: 3rem;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 2px;
-    background: linear-gradient(
-        to right,
-        transparent 0%,
-        var(--vintage-border) 50%,
-        transparent 100%
-    );
-}
-    </style>
-<footer>
-    <div class="footer-content">
-        <p class="doc-version">📜 Documentation v0.0.1 - March 2025</p>
-        <div class="doc-credits">
-            <span class="doc-crafted">Crafted with care</span>
-            <span class="vintage-scroll">📃</span>
-            <span class="doc-team">by &nbsp; [Panagiotis Kotsorgios , Fotis Markantonatos]</span>
+    <footer>
+        <div class="footer-content">
+            <p class="doc-version">📜 Documentation v0.0.1 - March 2025</p>
+            <div class="doc-credits">
+                <span class="doc-crafted">Crafted with care</span>
+                <span class="vintage-scroll">📃</span>
+                <span class="doc-team">by &nbsp; [Panagiotis Kotsorgios, Fotis Markantonatos]</span>
+            </div>
+            <div class="doc-tags">
+                <span class="tag">Markdown</span>
+                <span class="tag">LaTeX</span>
+                <span class="tag">Doxygen</span>
+                <span class="tag">Man Pages</span>
+            </div>
+            <p class="copyright">© 2025 PI-DEFENDER school Project</p>
         </div>
-        <div class="doc-tags">
-            <span class="tag">Markdown</span>
-            <span class="tag">LaTeX</span>
-            <span class="tag">Doxygen</span>
-            <span class="tag">Man Pages</span>
-        </div>
-        <p class="copyright">© 2025 PI-DEFENDER school Project</p>
-    </div>
-</footer>
+    </footer>
+
+    <script>
+        // Highlight active section in sidebar
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.sidebar-nav a');
+            const sections = document.querySelectorAll('.doc-section');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
