@@ -28,9 +28,7 @@ body {
     padding-top: 50px;
 }
 
-/* Add all previous styles from earlier version */
 
-/* New download cards */
 .download-options {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
